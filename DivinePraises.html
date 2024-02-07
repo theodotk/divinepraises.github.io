@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divine Praises</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    #text-container {
+        display: none;
+    }
+    .subhead {
+        font-size: 16px;
+        font-weight: bold;
+		color: red;
+    }
+	.column {
+    float: left;
+    }
+	.left {
+    width: 30%;
+    }
+    .middle {
+    width: 40%;
+    }
+    .right {
+    width: 30%;
+    }
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="column left">
+			<h4>Rubrics version</h4>
+			<form id="option-selector">
+				<input type="radio" id="option-1" name="option" value="1" onchange="loadText()">
+				<label for="option-1">Official rubrics</label><br>
+				<input type="radio" id="option-2" name="option" value="2" onchange="loadText()" checked>
+				<label for="option-2">Basilian Breviary</label><br>
+			</form>
+		</div>	
+		<div class="column middle">
+			<h4>Hour</h4>
+			<i> <FONT COLOR="RED">By default, an hour corresponding to the time of the day is selected.</FONT></i> <br>
+			<form id="hour-selector">
+				<input type="radio" id="vespers" name="hour" value="vespers.json" onchange="loadText()">
+				<label for="vespers">Vespers</label><br>
+				<input type="radio" id="compline" name="hour" value="compline.json" onchange="loadText()">
+				<label for="compline">Compline</label><br>
+				<input type="radio" id="midnight" name="hour" value="midnight.json" onchange="loadText()">
+				<label for="midnight">Midnight Hour</label><br>
+				<input type="radio" id="matins" name="hour" value="matins.json" onchange="loadText()">
+				<label for="matins">Matins</label><br>
+				<input type="radio" id="hour-1" name="hour" value="1hour.json" onchange="loadText()">
+				<label for="hour-1">First Hour</label><br>
+				<input type="radio" id="hour-3" name="hour" value="3hour.json" onchange="loadText()">
+				<label for="hour-3">Third Hour</label><br>
+				<input type="radio" id="hour-6" name="hour" value="6hour.json" onchange="loadText()">
+				<label for="hour-6">Sixth Hour</label><br>
+				<input type="radio" id="hour-9" name="hour" value="9hour.json" onchange="loadText()">
+				<label for="hour-9">Ninth Hour</label><br>
+			</form>
+		</div>
+		<div class="column right">
+			<h4>Clergy</h4>
+			<form id="hour-selector">
+				<input type="radio" id="priest-yes" name="priest" value="present" onchange="setPriest()">
+				<label for="priest-yes">With at least a priest</label><br>
+				<input type="radio" id="priest-no" name="priest" value="not" onchange="setPriest()" checked>
+				<label for="priest-no">Laymen only</label><br>
+			</form>
+		</div>
+	</div>
+    <div id="text-container">
+        <h2>The hour</h2>
+		<div id="usual-beginning"></div>
+        <div id="psalms"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+	// make Usual Beginning
+	var cross = `<FONT COLOR="RED"><b>†</b></FONT>`
+	
+	var glory = `${cross} Glory be to the Father and to the Son and to the Holy Spirit,<br><br>
+	Now and for ever and ever. Amen.<br><br>`
+	
+	var text = `<div id="beginning"></div>
+		<FONT COLOR="RED">Choir:</FONT> Amen.<br><br>
+		<i> <FONT COLOR="RED">Next lines are sung interchangeable by two parts of the choir.</FONT></i> <br><br>
+		Glory be to You, our God, glory be to You!<br><br>
+		Heavenly King, Advocate, Spirit of Truth, Who are everywhere present and fill all things, Treasury of Blessings, Bestower of Life, come, and dwell within us; cleanse us of all that defiles us, and, O Good One, save our souls.<br><br>
+		${cross} Holy God, Holy and Mighty, Holy and immortal, have mercy on us! <FONT COLOR="RED">(3)</FONT><br><br>
+		${glory}
+		Trinity most holy, have mercy on us.Cleanse us of oursins, O Lord; pardon our transgressions, O Master; look upon our weaknesses and heal them, O Holy One; for the sake of Your name.<br><br>
+		Lord, have mercy. <FONT COLOR="RED">(3)</FONT><br><br>
+		${glory}
+		Our Father, Who art in heaven, hallowed be Thy Name. Thy kingdom come. Thy will be done, on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil.<br><br>
+		<div id="our-father-ending"></div>
+		<FONT COLOR="RED">Choir:</FONT> Amen.<br><br>
+		Lord, have mercy. <FONT COLOR="RED">(6)</FONT><br><br>
+		Lord, have mercy. <FONT COLOR="RED">(6)</FONT><br><br>
+		${glory}
+		${cross} Come, let us bow in worship before the King, our God!<br><br>
+		${cross} Come, let us bow in worship before Christ, the King, our God!<br><br>
+		${cross} Come, let us bow in worship and fall down before the very Lord Jesus Christ,<br><br>
+		<FONT COLOR="RED">Choir:</FONT> Our King and God!<br><br>`;
+	document.getElementById("usual-beginning").innerHTML = text;
+</script>
+
+</body>
+</html>
