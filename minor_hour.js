@@ -6,6 +6,7 @@ function minorHour(hour){
 		9: "Ninth"
 	}
 	var numOhHour = hour.charAt(0);
+	// TODO: enging of Our Father is missing
 	document.getElementById("text-container").innerHTML = `<h2>The ${numeral[numOhHour]} hour</h2>
 	${usualBeginning}<br>
 	<div id="psalms"></div><br>
